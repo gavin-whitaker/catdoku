@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1d1b2e">
+  <title>CatDoku</title>
+  <link rel="icon" href="data:,">
+
+  <script src="https://bridge.playgama.com/v2/stable/playgama-bridge.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <section id="screen-loading" class="screen active">
+      <div class="logo big">CAT<span>DOKU</span></div>
+      <canvas id="loadingCat" class="pixel" width="16" height="16"></canvas>
+      <div class="loading-text">LOADING...</div>
+    </section>
+
+    <section id="screen-map" class="screen">
+      <header class="topbar">
+        <div class="logo">CAT<span>DOKU</span></div>
+        <div class="topbar-right">
+          <button class="yarn-pill" data-action="shop" aria-label="Yarn shop">
+            <i class="ico" data-ico="yarn"></i><span class="yarn-count">0</span><b>+</b>
+          </button>
+          <button class="icon-btn" data-action="sound" aria-label="Toggle sound"><i class="ico sound-ico" data-ico="soundOn"></i></button>
+          <button class="icon-btn" data-action="help" aria-label="How to play">?</button>
+        </div>
+      </header>
+      <div id="mapScroll">
+        <div id="mapInner"><canvas id="mapPath" class="pixel"></canvas></div>
+      </div>
+      <div class="map-play"><button class="btn" id="playBtn" data-action="playcur">PLAY</button></div>
+    </section>
+
+    <section id="screen-game" class="screen">
+      <header class="topbar">
+        <button class="icon-btn" data-action="pause" aria-label="Pause">II</button>
+        <div class="level-info">
+          <div id="levelTitle">LEVEL 1</div>
+          <div id="levelSub">Kitten Corner</div>
+        </div>
+        <button class="yarn-pill" data-action="shop" aria-label="Yarn shop">
+          <i class="ico" data-ico="yarn"></i><span class="yarn-count">0</span><b>+</b>
+        </button>
+      </header>
+
+      <div class="status-row">
+        <div class="timer" id="timer">0:00</div>
+        <div class="star-meter" id="starMeter">
+          <i class="ico" data-ico="star"></i><i class="ico" data-ico="star"></i><i class="ico" data-ico="star"></i>
+        </div>
+        <div class="cat-counter" id="catCounter">0/4</div>
+      </div>
+
+      <div id="tipBar"></div>
+
+      <div id="boardWrap"><canvas id="board" class="pixel"></canvas></div>
+
+      <div class="powerups">
+        <button class="pu" data-action="hint">
+          <i class="ico" data-ico="laser"></i>
+          <span class="pu-name">LASER</span>
+          <span class="pu-cost"><i class="ico" data-ico="yarn"></i><span data-cost="hint"></span></span>
+        </button>
+        <button class="pu" data-action="catnip">
+          <i class="ico" data-ico="catnip"></i>
+          <span class="pu-name">CATNIP</span>
+          <span class="pu-cost"><i class="ico" data-ico="yarn"></i><span data-cost="catnip"></span></span>
+        </button>
+        <button class="pu" data-action="whiskers">
+          <i class="ico" data-ico="whiskers"></i>
+          <span class="pu-name">WHISKERS</span>
+          <span class="pu-cost"><i class="ico" data-ico="yarn"></i><span data-cost="whiskers"></span></span>
+        </button>
+      </div>
+
+      <div class="tools">
+        <button class="tool-btn" data-action="undo">UNDO</button>
+        <button class="tool-btn" data-action="clear">CLEAR</button>
+      </div>
+    </section>
+
+    <div id="modal" class="modal hidden"><div class="modal-card" id="modalCard"></div></div>
+    <div id="adBreak" class="ad-break hidden"><div>AD BREAK</div><span>Next puzzle coming right up</span></div>
+    <div id="toast"></div>
+  </div>
+  <canvas id="fx"></canvas>
+
+  <script src="levels.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
